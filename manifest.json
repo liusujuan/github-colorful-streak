@@ -7,16 +7,16 @@
   "manifest_version": 2,
   "name": "Github Colorful Streak",
   "version": "1.0",
-  "description": "Change Github contribution streak color.",
+  "description": "Custom Github contribution streak color.",
   "options_page": "options.html",
   "icons": {
-    "16": "icon-16.png",
-    "48": "icon-48.png",
-    "128": "icon-128.png"
+    "16": "16.png",
+    "48": "48.png",
+    "128": "128.png"
   },
   "browser_action": {
     "default_title": "Github colorful",
-    "default_icon": "icon-48.png"
+    "default_icon": "128.png"
   },
   "permissions": [
     "tabs",
