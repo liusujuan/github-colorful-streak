@@ -8,6 +8,7 @@
   "name": "Github Colorful Streak",
   "version": "1.0",
   "description": "Change Github contribution streak color.",
+  "options_page": "options.html",
   "icons": {
     "16": "icon-16.png",
     "48": "icon-48.png",
@@ -19,6 +20,7 @@
   },
   "permissions": [
     "tabs",
-    "*://github.com/*"
+    "*://github.com/*",
+    "storage"
   ]
 }
