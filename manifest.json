@@ -1,0 +1,24 @@
+{
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "manifest_version": 2,
+  "name": "Github Colorful Streak",
+  "version": "1.0",
+  "description": "Change Github contribution streak color.",
+  "icons": {
+    "16": "icon-16.png",
+    "48": "icon-48.png",
+    "128": "icon-128.png"
+  },
+  "browser_action": {
+    "default_title": "Github colorful",
+    "default_icon": "icon-48.png"
+  },
+  "permissions": [
+    "tabs",
+    "*://github.com/*"
+  ]
+}
