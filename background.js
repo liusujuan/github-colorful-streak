@@ -1,5 +1,4 @@
-chrome.tabs.onUpdated.addListener(function (tabId, info, tab) {
-    console.log(info.status);
+chrome.tabs.onUpdated.addListener(function (tabId, info) {
     if (info.status === 'complete') {
         chrome.tabs.executeScript(
             null,
@@ -7,16 +6,3 @@ chrome.tabs.onUpdated.addListener(function (tabId, info, tab) {
         );
     }
 });
-// chrome.app.runtime.onLaunched.addListener(function() {
-//     chrome.app.window.create('test.html', {
-//         id: 'MyWindowID',
-//         bounds: {
-//             width: 800,
-//             height: 600,
-//             left: 100,
-//             top: 100
-//         },
-//         minWidth: 800,
-//         minHeight: 600
-//     });
-// });

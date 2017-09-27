@@ -1,30 +1,24 @@
-// Saves options to localStorage.
-function saveOptions(id, color) {
-    console.log('saveOptions: ' + id + ", " + color);
-    // var select = document.getElementById("color");
-    // var index = select.children[select.selectedIndex].value;
-    // chrome.storage.sync.set({'index': index});
-    // var status = document.getElementById("status");
-    // status.innerHTML = 'Options Saved.';
-    // setTimeout(function () {
-    //     status.innerHTML = '';
-    // }, 750);
+function saveOptions(index, color) {
+    chrome.storage.sync.set({'index': index, 'color': color});
+    var selectedDiv = document.getElementById("selected");
+    var colorDiv = document.getElementById("color");
+    selectedDiv.innerHTML = document.getElementById(index).innerHTML;
+    colorDiv.innerHTML = color;
+    colorDiv.style.color = color;
 }
 
-// Restores select box state to saved value from localStorage.
 function restoreOptions() {
-    console.log('load...');
-    // chrome.storage.sync.get(['index'], function (items) {
-    //     var index = items['index'];
-    //     var select = document.getElementById('color');
-    //     for (var i = 0; i < select.children.length; i++) {
-    //         var child = select.children[i];
-    //         if (child.value === index) {
-    //             child.selected = 'true';
-    //             break;
-    //         }
-    //     }
-    // });
+    chrome.storage.sync.get(['index', 'color'], function (items) {
+        var index = items['index'];
+        var color = items['color'];
+        index = (index === undefined) ? 5 : index;
+        color = (color === undefined) ? 'blue' : color;
+        var selectedDiv = document.getElementById("selected");
+        var colorDiv = document.getElementById("color");
+        selectedDiv.innerHTML = document.getElementById(index).innerHTML;
+        colorDiv.innerHTML = color;
+        colorDiv.style.color = color;
+    });
 }
 
 window.addEventListener('load', restoreOptions);

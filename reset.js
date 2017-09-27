@@ -40,10 +40,11 @@ var colors = [
     gray,
     blueGray,
     black];
-var dest = green;
+
+var dest = blue;
 
 chrome.storage.sync.get(['index'], function (items) {
-    dest = colors[items['index']];
+    dest = (items['index'] === undefined) ? dest : colors[items['index']];
     resetRects();
     resetLists();
 });
