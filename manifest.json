@@ -6,7 +6,7 @@
   },
   "manifest_version": 2,
   "name": "Github Colorful Streak",
-  "version": "1.0",
+  "version": "1.1",
   "description": "Custom Github contribution streak color.",
   "options_page": "options.html",
   "icons": {
