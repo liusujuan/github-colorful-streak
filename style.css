@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css?family=Short+Stack');
+
+* {
+    margin: 0;
+}
+
+body {
+    background: #333 url("bg.png");
+}
+
+.clear {
+    clear: both;
+}
+
+#title {
+    font-family: 'Short Stack', cursive;
+    color: #333;
+    font-size: 3em;
+    text-align: center;
+    margin: 50px 0;
+}
+
+#container {
+    width: 80%;
+    margin: auto;
+}
+
+.cell {
+    width: 45%;
+    height: 50px;
+    cursor: pointer;
+    float: left;
+}
+
+#container div.cell:nth-child(even) {
+    margin-left: 5%;
+}
+
+#container div.cell:nth-child(odd) {
+    margin-right: 5%;
+}
+
+span {
+    display: inline-block;
+    width: 20%;
+    height: 100%;
+}
+
+#selected,
+#color {
+    height: 50px;
+    font-family: 'Short Stack', cursive;
+    font-size: 2em;
+    text-align: center;
+    padding-top: 30px;
+}
