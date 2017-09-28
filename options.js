@@ -1,3 +1,21 @@
+var imported = document.createElement('script');
+imported.src = 'colors.js';
+document.head.appendChild(imported);
+
+console.log(test);
+
+// var innerHTML = '';
+// for (var colorsIndex = 0; colorsIndex < colors.length; colorsIndex++) {
+//     innerHTML += '<div id="' + colorsIndex + '" class="' + ((colorsIndex % 2 === 0) ? 'left' : 'right') + '" title="' + colors[colorsIndex] + '">';
+//     for (var colorIndex = 0; colorIndex < colors[colorsIndex].length; colorIndex++) {
+//         innerHTML += '<span style="background:' + colors[colorsIndex][colorIndex] + '"></span>';
+//     }
+//     innerHTML += '</div>';
+// }
+//     console.log(innerHTML);
+//
+// document.getElementById('container').innerHTML = innerHTML;
+
 function saveOptions(index, color) {
     chrome.storage.sync.set({'index': index, 'color': color});
     var selectedDiv = document.getElementById("selected");
