@@ -44,9 +44,10 @@ var colors = [
 
 var dest = blue;
 
+var path = window.location.pathname;
+var page = path.split("/").pop();
+
 chrome.storage.sync.get(['index'], function (items) {
-    var path = window.location.pathname;
-    var page = path.split("/").pop();
     if (page === 'options.html') {
         return;
     }
@@ -91,22 +92,6 @@ function rgb2hex(rgb) {
 }
 
 /* for options.html BEGIN */
-
-var innerHTML = '';
-for (var colorsIndex = 0; colorsIndex < colors.length; colorsIndex++) {
-
-    innerHTML += '<div id="' + colorsIndex + '" class="cell" title="' + colors[colorsIndex][0] + '">';
-    for (var colorIndex = 1; colorIndex < colors[colorsIndex].length + 1; colorIndex++) {
-        innerHTML += '<span style="background:' + colors[colorsIndex][colorIndex] + '"></span>';
-    }
-    innerHTML += '</div>';
-}
-
-innerHTML += '<div id="selected" class="clear"></div>';
-innerHTML += '<div id="color" class="clear"></div>';
-
-document.getElementById('container').innerHTML = innerHTML;
-
 function saveOptions(index, color) {
     chrome.storage.sync.set({'index': index, 'color': color});
     var selectedDiv = document.getElementById("selected");
@@ -130,11 +115,28 @@ function restoreOptions() {
     });
 }
 
-window.addEventListener('load', restoreOptions);
-for (var i = 0; i < document.querySelectorAll('div[title]').length; i++) {
-    var div = document.querySelectorAll('div[title]')[i];
-    div.addEventListener('click', function (e) {
-        saveOptions(e.target.parentElement.id, e.target.parentElement.title);
-    });
+if (page === 'options.html') {
+    var innerHTML = '';
+    for (var colorsIndex = 0; colorsIndex < colors.length; colorsIndex++) {
+
+        innerHTML += '<div id="' + colorsIndex + '" class="cell" title="' + colors[colorsIndex][0] + '">';
+        for (var colorIndex = 1; colorIndex < colors[colorsIndex].length + 1; colorIndex++) {
+            innerHTML += '<span style="background:' + colors[colorsIndex][colorIndex] + '"></span>';
+        }
+        innerHTML += '</div>';
+    }
+
+    innerHTML += '<div id="selected" class="clear"></div>';
+    innerHTML += '<div id="color" class="clear"></div>';
+
+    document.getElementById('container').innerHTML = innerHTML;
+
+    window.addEventListener('load', restoreOptions);
+    for (var i = 0; i < document.querySelectorAll('div[title]').length; i++) {
+        var div = document.querySelectorAll('div[title]')[i];
+        div.addEventListener('click', function (e) {
+            saveOptions(e.target.parentElement.id, e.target.parentElement.title);
+        });
+    }
 }
 /* for options.html END */
